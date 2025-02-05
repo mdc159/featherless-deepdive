@@ -127,4 +127,16 @@ The web interface is built with:
 - Larger models (70B+) are limited to single concurrent operations
 - Smaller models support up to 4 concurrent operations
 - Dark/light theme preference is automatically saved
+
+
+# Community & Support
+Our growing community of developers, enthusiasts, and AI practitioners is here to help you get the most out of Featherless:
+- Join our (Discord)[https://discord.gg/7gybCMPjVA] community to connect with other users
+- Share your experiences with us!
+- Follow us on (X)[https://x.com/FeatherlessAI] for the latest updates
+- Try out (DeepSeek-R1)[https://featherless.ai/blog/deepseek-r1-available-for-premium-users] with unlimited tokens on our premium plan!
+
+# License
+MIT License
+
 ![DeepSeekXFeatherless](https://cms.recursal.com/assets/featherlesswhalephoenix.png "DeepSeek-R1 available on Featherless")
