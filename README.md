@@ -1,5 +1,6 @@
 # DeepDive 🐋 
 
+![DeepDive Interface](src/assets/intro.png)
 A web interface for [Open Deep Research](https://github.com/dzhng/deep-research), an AI-powered research assistant that performs iterative, deep research on any topic by combining search engines, web scraping, and large language models.
 
 This project builds upon the original CLI tool by adding:
@@ -140,3 +141,4 @@ Our growing community of developers, enthusiasts, and AI practitioners is here t
 MIT License
 
 ![DeepSeekXFeatherless](https://cms.recursal.com/assets/featherlesswhalephoenix.png "DeepSeek-R1 available on Featherless")
+
