@@ -131,10 +131,10 @@ The web interface is built with:
 
 # Community & Support
 Our growing community of developers, enthusiasts, and AI practitioners is here to help you get the most out of Featherless:
-- Join our (Discord)[https://discord.gg/7gybCMPjVA] community to connect with other users
+- Join our [Discord](https://discord.gg/7gybCMPjVA) community to connect with other users
 - Share your experiences with us!
-- Follow us on (X)[https://x.com/FeatherlessAI] for the latest updates
-- Try out (DeepSeek-R1)[https://featherless.ai/blog/deepseek-r1-available-for-premium-users] with unlimited tokens on our premium plan!
+- Follow us on [X](https://x.com/FeatherlessAI) for the latest updates
+- Try out [DeepSeek-R1](https://featherless.ai/blog/deepseek-r1-available-for-premium-users) with unlimited tokens on our premium plan!
 
 # License
 MIT License
