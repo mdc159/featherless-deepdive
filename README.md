@@ -1,13 +1,12 @@
-# DeepDive powered by [Featherless.ai](https://featherless.ai/) 🪶
+# DeepDive 🐋 
 
 A web interface for [Open Deep Research](https://github.com/dzhng/deep-research), an AI-powered research assistant that performs iterative, deep research on any topic by combining search engines, web scraping, and large language models.
 
 This project builds upon the original CLI tool by adding:
 - A modern web interface with real-time research progress
-- Support for multiple AI models (DeepSeek-R1, Qwen2.5, & [others](https://featherless.ai/models))
+- Support for multiple AI models (DeepSeek-R1, Qwen2.5, & others) powered by [Featherless.ai](https://featherless.ai/) 🪶
 - Concurrent processing capabilities
 - Downloadable markdown reports
-
 
 ### Research Flow
 1. Enter research query
