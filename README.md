@@ -61,3 +61,4 @@ This will start:
 - Larger models (70B+) are limited to single concurrent operations
 - Smaller models support up to 4 concurrent operations
 - Dark/light theme preference is automatically saved
+![DeepSeekXFeatherless](https://cms.recursal.com/assets/featherlesswhalephoenix.png "DeepSeek-R1 available on Featherless")
