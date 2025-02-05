@@ -1,4 +1,4 @@
-# DeepDive by Featherless.ai
+# DeepDive powered by [Featherless.ai](https://featherless.ai/) 🪶
 
 A web interface for [Open Deep Research](https://github.com/dzhng/deep-research), an AI-powered research assistant that performs iterative, deep research on any topic by combining search engines, web scraping, and large language models.
 
