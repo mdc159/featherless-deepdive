@@ -25,22 +25,89 @@ The web interface is built with:
 - Vite for development and building
 - Express backend for API handling
 
-## Setup
+## Detailed Installation Steps
 
-1. Follow the original setup instructions
-   Clone the repository
-   Install dependencies:
+1. **Clone the Repository**
+   ```bash
+   git clone <repository-url>
+   cd featherless-deepdive
+   ```
+
+2. **Install Dependencies**
+   ```bash
    npm install
-   Set up environment variables in a .env.local file:
-      FIRECRAWL_KEY="your_firecrawl_key"
-      FEATHERLESS_KEY="your_openai_key"
+   ```
 
-2. Run the development server:
+3. **Set up Environment Variables**
+   Create a `.env.local` file in the root directory:
+   ```bash
+   FIRECRAWL_KEY="your_firecrawl_key"
+   FEATHERLESS_KEY="your_featherless_key"
+   ```
+
+4. **Verify Tailwind Configuration**
+   The project uses Tailwind CSS with typography and forms plugins. The configuration files should be present:
+   - tailwind.config.js
+   - postcss.config.js
+   - src/client/index.css
+
+   If any are missing, create them with the following content:
+
+   postcss.config.js:
+   ```javascript
+   module.exports = {
+     plugins: {
+       tailwindcss: {},
+       autoprefixer: {},
+     },
+   }
+   ```
+
+   src/client/index.css:
+   ```css
+   @tailwind base;
+   @tailwind components;
+   @tailwind utilities;
+   ```
+
+5. **Start Development Server**
+   ```bash
+   # Start both frontend and backend
    npm run dev
-This will start:
-- Frontend at `http://localhost:5173`
-- Backend at `http://localhost:3000`
 
+   # Or start them separately:
+   npm run frontend  # Starts Vite dev server
+   npm run backend   # Starts Express server
+   ```
+
+6. **Access the Application**
+   - Frontend: http://localhost:5173
+   - Backend: http://localhost:3000
+
+7. **Verify Installation**
+   - Check if the dark/light theme toggle works
+   - Verify model selection dropdown is populated
+   - Test a simple research query
+
+## Troubleshooting
+
+- If you encounter missing TypeScript types, run:
+  ```bash
+  npm install @types/node @types/react @types/react-dom --save-dev
+  ```
+
+- If Tailwind styles are not working, verify that your `tailwind.config.js` includes the correct content paths:
+  ```javascript
+  module.exports = {
+    content: [
+      "./index.html",
+      "./src/**/*.{js,ts,jsx,tsx}",
+    ],
+    // ...rest of config
+  }
+  ```
+
+- For environment variable issues, make sure you're using the correct format in `.env.local` and that the file is in the root directory
 
 ## Usage
 
