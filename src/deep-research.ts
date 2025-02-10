@@ -36,6 +36,9 @@ const firecrawl = new FirecrawlApp({
   apiKey: process.env.FIRECRAWL_KEY!,
 });
 
+
+const PERPLEXITY_API_KEY = process.env.PERPLEXITY_API_KEY
+
 /**
  * Helper that removes any extraneous tokens (like <think> blocks) from DeepSeek responses.
  * It extracts the substring starting at the first "{".
@@ -200,12 +203,12 @@ async function processSerpResult({
   selectedModel,
 }: {
   query: string;
-  result: SearchResponse;
+  result: string[];
   numLearnings?: number;
   numFollowUpQuestions?: number;
   selectedModel?: string;
 }) {
-  const contents = compact(result.data.map(item => item.markdown));
+  const contents = compact(result);
   console.log(`Ran ${query}, found ${contents.length} contents`);
 
   try {
@@ -431,18 +434,54 @@ export async function deepResearch({
     selectedModel,
   });
 
+  function isNotBlank(value: string | null | undefined): value is string {
+    return !!value && value.trim().length > 0;
+  }
+
+
   // Replace globalLimit with requestLimit
   const results = await Promise.all(
     serpQueries.map(serpQuery =>
       requestLimit(async () => {
         try {
-          const result = await firecrawl.search(serpQuery.query, {
-            timeout: 150000,
-            scrapeOptions: { formats: ['markdown'] },
-          });
+          let result = [""]
+          let newUrls = null;
+    
+          if (isNotBlank(PERPLEXITY_API_KEY)) {
+            // Define the payload for the API call
+            const payload = {
+              messages: [{ role: 'user', content: serpQuery.query }],
+              model: 'sonar-reasoning'
+            };
 
-          // Collect URLs from this search
-          const newUrls = compact(result.data.map(item => item.url));
+            // Make the fetch call using the same arguments
+            const perplexityResponse = await fetch(
+              'https://api.perplexity.ai/chat/completions',
+              {
+                method: 'POST',
+                headers: {
+                  'Authorization': `Bearer ${PERPLEXITY_API_KEY}`,
+                  'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(payload)
+              }
+            );
+            
+            if (!perplexityResponse.ok) throw new Error('Perplexity API error');
+            
+            const responseData = await perplexityResponse.json();
+            result = [responseData.choices[0].message.content]
+            newUrls = responseData.citations || [];
+          } else {
+            // Original Firecrawl Call
+            let firecrawlResults = await firecrawl.search(serpQuery.query, {
+              timeout: 150000,
+              scrapeOptions: { formats: ['markdown'] },
+            });
+            result = firecrawlResults.data.map(item => item.markdown)
+            newUrls = compact(firecrawlResults.data.map(item => item.url));
+          }
+
           const newBreadth = Math.ceil(breadth / 2);
           const newDepth = depth - 1;
           console.info("Processing serp result", serpQuery.query);
